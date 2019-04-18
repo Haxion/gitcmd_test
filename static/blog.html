@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #header {
+            width: 100%;
+            height: 160px;
+            font-size: 50px;
+            line-height: 160px;
+            padding-left: 50px;
+            background-color: darkgray;
+        }
+
+        #left {
+            float: left;
+            width: 450px;
+            margin: 40px;
+            padding: 30px;
+            border: solid 1px gray;
+        }
+
+        #left input {
+            width: calc(100% - 5px);
+            height: 25px;
+            margin: 10px 0;
+            padding-left: 5px;
+        }
+
+        #left textarea {
+            width: calc(100% - 20px);
+            height: 200px;
+            max-width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        #left button {
+            float: right;
+            width: 70px;
+            height: 30px;
+            margin-top: 10px;
+        }
+
+        #right {
+            float: left;
+            width: 450px;
+            min-height: 350px;
+            padding: 30px;
+            margin: 40px;
+            border: solid 1px darkgrey;
+        }
+
+        #right .item {
+            width: 100%;
+            min-height: 30px;
+            margin-bottom: 15px;
+            border: solid 1px darkseagreen;
+        }
+
+        #right .item span {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <p>Vue is good</p>
+</div>
+<div id="container">
+    <div id="left">
+        <p>姓名</p>
+        <input type="text">
+        <p>评论：</p>
+        <textarea name="comment"></textarea>
+        <button type="button">提交</button>
+    </div>
+    <div id="right">
+        <div class="item">
+            <span>姓名:a</span>
+            <span>aaaaa</span>
+            <button>删除</button>
+        </div>
+        <div class="item">
+            <span>姓名:a</span>
+            <span>aaaaa</span>
+        </div>
+        <div class="item">
+            <span>姓名:a</span>
+            <span>aaaaa</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
