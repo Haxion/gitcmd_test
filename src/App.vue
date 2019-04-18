@@ -1,65 +1,61 @@
 <template>
     <div id="app">
         <!--<router-view/>-->
-        <div id="header">
-            <p>Vue is good</p>
+        <div id="box">
+            <header_-list :addList="addList"/>
+            <content_-list :lists="lists" :addTmp="addTmp"/>
+            <footer_-list :lists="lists" :delTmp="delTmp"/>
         </div>
-        <div id="container">
-            <left v-bind:addComment="addComment" />
-            <div id="right">
-                <right v-for="(list,index) in lists" v-bind:list="list" :key="index" :del-function="delComment" :index="index"/>
-            </div>
 
-        </div>
     </div>
 </template>
 
 <script>
-import Left from './components/Left'
-import Right from './components/Right'
+import Header_List from './components/Header_List'
+import Content_List from './components/Content_List'
+import Footer_List from './components/Footer_List'
 
 export default {
   name: 'App',
   components: {
-    Left,
-    Right
+    Header_List,
+      Content_List,
+      Footer_List,
   },
   data () {
     return {
-      lists: [
-        {name: 'a', text: 'this is a'},
-        {name: 'b', text: 'this is b'},
-        {name: 'c', text: 'this is c'}
-      ]
+        todo_message:'',
+      lists: [],
+        tmpAry:[]
     }
   },
   methods: {
-    addComment (comment) {
-      this.lists.unshift(comment)
-    },
-    delComment (index) {
-      this.lists.splice(index, 1)
-    }
+      addList(todo_message){
+          todo_message = todo_message.trim();
+          if (todo_message){
+              this.lists.push(todo_message);
+              // console.log(this.lists)
+          } else {
+              alert('输入内容不能为空！')
+          }
+      },
+      addTmp(tmpAry){
+          this.tmpAry = tmpAry;
+          console.log(this.tmpAry)
+          console.log(this)
+      },
+      delTmp(){
+          if (this.tmpAry.length===0){
+              return
+          }
+          for (let i=0;i<this.tmpAry.length;i++){
+              this.lists.splice(this.tmpAry[i],1)
+          }
+      }
   }
 }
 </script>
 
 <style>
-    #header {
-        width: 100%;
-        height: 160px;
-        font-size: 50px;
-        line-height: 160px;
-        padding-left: 50px;
-        background-color: darkgray;
-    }
 
-    #right {
-        float: left;
-        width: 450px;
-        min-height: 350px;
-        padding: 30px;
-        margin: 40px;
-        border: solid 1px darkgrey;
-    }
 </style>
