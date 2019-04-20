@@ -25,12 +25,7 @@ export default {
   data () {
     return {
       todo_message: '',
-      lists: [
-        {text: 'aaa', isOK: false},
-        {text: 'bbb', isOK: true},
-        {text: 'ccc', isOK: false}
-      ],
-      tmpAry: []
+      lists: JSON.parse(window.localStorage.getItem('lists') || '[]')
     }
   },
   methods: {
@@ -45,6 +40,14 @@ export default {
     },
     delteAllLists () {
       this.lists = this.lists.filter(list => !list.isOK)
+    }
+  },
+  watch: {
+    lists: {
+      handler: function (value) {
+        // 将 todo 最新值的 JSON 数据，保存到 localStorage 中
+        window.localStorage.setItem('lists', JSON.stringify(value))
+      }
     }
   }
 }
