@@ -7,15 +7,21 @@
 <script>
     export default {
         name: 'Header_List',
-        props:['addList'],
-        data(){
-            return{
-                msg:'',
+        props: ['addList'],
+        data () {
+            return {
+                msg: '',
             }
         },
-        methods:{
-            todo_submit(){
-                this.addList(this.msg)
+        methods: {
+            todo_submit () {
+                this.msg = this.msg.trim()
+                if (!this.msg) {
+                    alert('输入内容不能为空！')
+                    return
+                }
+                const obj = {text: this.msg, isOK: false}
+                this.addList(obj)
                 this.msg = ''
             }
         }

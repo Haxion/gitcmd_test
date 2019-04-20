@@ -1,19 +1,21 @@
 <template>
     <div id="content">
         <p v-show="!lists.length"><i>暂无待办事项</i></p>
-        <Item_List :lists="lists" :add-tmp="addTmp"></Item_List>
+        <ul>
+            <ItemList v-for="(list,index) in lists" :key="index" :list="list" :index="index" :delList="delList"></ItemList>
+        </ul>
     </div>
 </template>
 
 <script>
-    import Item_List from './Item_List'
-  export default {
-    name: 'Content_List',
-      props:['lists','addTmp'],
-      components:{
-          Item_List,
-      }
+import ItemList from './Item_List'
+export default {
+  name: 'Content_List',
+  props: ['lists', 'delList'],
+  components: {
+    ItemList
   }
+}
 </script>
 
 <style scoped>
@@ -27,4 +29,10 @@
         margin: 20px;
         text-align: center;
     }
+    #content ul {
+        position: relative;
+        margin: 5px;
+        width: 100%;
+    }
+
 </style>

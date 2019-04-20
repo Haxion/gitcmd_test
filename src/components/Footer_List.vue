@@ -1,26 +1,40 @@
 <template>
     <div id="footer">
-        <span>已完成: 0</span>
+        <input type="checkbox" v-model="allCheck">
+        <span>已完成: {{totalFinish}}</span>
         <span> / </span>
         <span>全部: {{lists.length}}</span>
-        <button @click="listDelete">清除已完成的任务</button>
+        <button @click="delteAllLists">清除已完成的任务</button>
     </div>
 </template>
 
 <script>
-  export default {
-    name: 'Footer_List',
-      props:['lists','delTmp'],
-      methods:{
-        listDelete(){
-            this.delTmp();
-        }
+export default {
+  name: 'Footer_List',
+  props: {
+    lists: Array,
+    delteAllLists: Function,
+    selectAllLists: Function
+  },
+  methods: {},
+  computed: {
+    totalFinish () {
+      return this.lists.reduce((total, currentValue) => total + (currentValue.isOK ? 1 : 0), 0)
+    },
+    allCheck: {
+      get () {
+        return this.totalFinish === this.lists.length
+      },
+      set (checked) {
+        this.selectAllLists(checked)
       }
+    }
   }
+}
 </script>
 
 <style scoped>
-    #footer{
+    #footer {
         position: relative;
         width: 100%;
     }
@@ -34,12 +48,17 @@
         outline-style: none;
     }
 
-    #footer button:hover{
+    #footer button:hover {
         background-color: lightcoral;
     }
 
-    #footer span{
+    #footer span {
         position: relative;
         margin-top: 10px;
+    }
+
+    #footer input {
+        position: relative;
+        top: -1px;
     }
 </style>
