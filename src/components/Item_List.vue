@@ -9,9 +9,10 @@
 </template>
 
 <script>
+import PubSub from 'pubsub-js'
 export default {
   name: 'Item_List',
-  props: ['list', 'index', 'delList'],
+  props: ['list', 'index'],
   data () {
     return {
       bgColor: 'white',
@@ -31,7 +32,8 @@ export default {
     delItem () {
       const {list, index} = this
       if (window.confirm(`确认删除 ${list.text} 吗`)) {
-        this.delList(index)
+        // this.delList(index)
+        PubSub.publish('delList', index)
       }
     }
   }

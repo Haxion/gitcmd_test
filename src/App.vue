@@ -4,7 +4,8 @@
         <div id="box">
             <!--<HeaderList :addList="addList"/>-->
             <HeaderList @addList="addList"/>
-            <ContentList :lists="lists" :delList="delList"/>
+            <!--<ContentList :lists="lists" :delList="delList"/>-->
+            <ContentList :lists="lists"/>
             <FooterList :lists="lists" :selectAllLists="selectAllLists" :delteAllLists="delteAllLists"/>
         </div>
 
@@ -15,6 +16,7 @@
 import HeaderList from './components/Header_List'
 import ContentList from './components/Content_List'
 import FooterList from './components/Footer_List'
+import PubSub from 'pubsub-js'
 
 export default {
   name: 'App',
@@ -50,6 +52,11 @@ export default {
         window.localStorage.setItem('lists', JSON.stringify(value))
       }
     }
+  },
+  mounted () {
+    PubSub.subscribe('delList', (msg, index) => {
+      this.delList(index)
+    })
   }
 }
 </script>
