@@ -21,7 +21,8 @@ export default {
         return
       }
       const obj = {text: this.msg, isOK: false}
-      this.addList(obj)
+      // this.addList(obj)
+        this.$emit('addList',obj)
       this.msg = ''
     }
   }

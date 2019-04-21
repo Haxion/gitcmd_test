@@ -2,7 +2,8 @@
     <div id="app">
         <!--<router-view/>-->
         <div id="box">
-            <HeaderList :addList="addList"/>
+            <!--<HeaderList :addList="addList"/>-->
+            <HeaderList @addList="addList"/>
             <ContentList :lists="lists" :delList="delList"/>
             <FooterList :lists="lists" :selectAllLists="selectAllLists" :delteAllLists="delteAllLists"/>
         </div>
