@@ -8,7 +8,6 @@
             <ContentList :lists="lists"/>
             <FooterList :lists="lists" :selectAllLists="selectAllLists" :delteAllLists="delteAllLists"/>
         </div>
-
     </div>
 </template>
 
@@ -23,7 +22,7 @@ export default {
   components: {
     HeaderList,
     ContentList,
-    FooterList
+    FooterList,
   },
   data () {
     return {
