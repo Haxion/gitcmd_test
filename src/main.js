@@ -3,8 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
 
-import './todoList.css'
+Vue.use(axios)
 
 Vue.config.productionTip = false
 

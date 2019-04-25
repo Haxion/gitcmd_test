@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>seach</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #search-top {
+            position: relative;
+            height: 100px;
+            padding-top: 50px;
+            margin-bottom: 30px;
+            background: lightgray;
+        }
+
+        #search-top #search-bar {
+            position: relative;
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        #search-top #search-bar input {
+            position: relative;
+            width: 300px;
+            height: 30px;
+            padding-left: 4px;
+            line-height: 30px;
+            outline: none;
+        }
+
+        #search-top #search-bar button {
+            position: relative;
+            width: 40px;
+            height: 32px;
+        }
+
+        #search-result {
+            position: relative;
+            width: 100%;
+            padding: 10px;
+            border: solid 1px gold;
+            text-align: center;
+        }
+
+        #search-result :after {
+            content: '';
+            clear: both;
+            display: block;
+        }
+
+        .search-item {
+            float: left;
+            width: 140px;
+            height: 160px;
+            margin: 20px 10px;
+            border: solid 1px darkcyan;
+        }
+
+        .search-item img {
+            width: 140px;
+            height: 160px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="search-top">
+        <div id="search-bar">
+            <input placeholder="输入要查询的用户名">
+            <button type="button">查询</button>
+        </div>
+    </div>
+    <div id="search-result">
+        <h3>搜寻结果</h3>
+        <div id="search-content">
+            <div class="search-item">
+                <img src="./bg.png" alt="">
+                <a href="">名字</a>
+            </div>
+            <div class="search-item">
+                <img src="./bg.png" alt="">
+                <a href="">名字</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
